@@ -7,18 +7,17 @@
 | nickname          | string | null: false, maxlength: 40 |
 | email             | string | null: false |
 | password          | string | null: false |
-| first-name        | string | null: false |
-| last-name         | string | null: false |
-| first-name-kana   | string | null: false |
-| last-name-kana    | string | null: false |
-| user_birth_year   |        | ActiveHash  |
-| user_birth_ month |        | ActiveHash  |
-| user_birth_day    |        | ActiveHash  |
+| first_name        | string | null: false |
+| last_name         | string | null: false |
+| first_name_kana   | string | null: false |
+| last_name_kana    | string | null: false |
+| birthday          | date   | null: false |
 
 ### Association
 
 has_many :items
-has_one  :purchase
+has_many :purchases
+has_one  :address
 
 
 ## itemsテーブル
@@ -28,13 +27,13 @@ has_one  :purchase
 | name              | string     | null: false, maxlength: 40 |
 | information       | text       | null: false  maxlength: 1000 |
 | price             | integer    | null: false |
-| user              | references | null: false |
-| category          |            | ActiveHash  |
-| status            |            | ActiveHash  |
-| delivery-fee      |            | ActiveHash  |
-| delivery-date     |            | ActiveHash  |
-| prefecture        |            | ActiveHash  |
-| image             |            | ActiveStorage |
+| user_id           | references | null: false |
+| category          | integer    | null: false, ActiveHash  |
+| status            | integer    | null: false, ActiveHash  |
+| delivery_fee      | integer    | null: false, ActiveHash  |
+| delivery_date     | integer    | null: false, ActiveHash  |
+| prefecture        | integer    | null: false, ActiveHash  |
+| image             | text       | null: false, ActiveStorage |
 
 ### Association
 
@@ -45,18 +44,9 @@ has_one    :purchase
 
 | Column            | Type       | Options     |
 | --------          | ------     | ----------- |
-| card-number       | bight      | null: false, maxlength: 16 |
-| card-month        | integer    | null: false, maxlength: 2 |
-| card-year         | integer    | null: false, maxlength: 2 |
-| card-cvc          | integer    | null: false, maxlength: 4 |
-| postal-code       | integer    | null: false, maxlength: 8 |
-| city              | string     | null: false |
-| addresses         | string     | null: false |
-| building          | string     | null: false |
-| phone-number      | bight      | null: false, maxlength: 11 |
-| user              | references |             |
-| item              | references |             |
-| prefecture        |            | ActiveHash  |
+| user_id           | references | null: false |
+| item_id           | references | null: false |
+
 
 ### Association
 
@@ -64,4 +54,18 @@ belongs_to :user
 belongs_to :item
 
 
+## addressesテーブル
 
+| Column            | Type       | Options     |
+| ----------        | -------    | ----------- |
+| postal_code       | integer    | null: false, maxlength: 8 |
+| city              | string     | null: false |
+| addresses         | string     | null: false |
+| building          | string     | null: false |
+| phone_number      | bight      | null: false, maxlength: 11 |
+| user_id           | references | null: false |
+| prefecture        | integer    | ActiveHash  |
+
+### Association
+
+belongs_to :user
