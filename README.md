@@ -32,7 +32,6 @@ has_many :purchases
 | delivery_fee_id   | integer    | null: false, ActiveHash  |
 | delivery_date_id  | integer    | null: false, ActiveHash  |
 | prefecture_id     | integer    | null: false, ActiveHash  |
-| image             | text       | null: false, ActiveStorage |
 
 ### Association
 
