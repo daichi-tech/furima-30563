@@ -60,8 +60,8 @@ has_one :address
 | postal_code       | string     | null: false, maxlength: 8 |
 | city              | string     | null: false |
 | addresses         | string     | null: false |
-| building          | string     | null: false |
-| phone_number      | bight      | null: false, maxlength: 11 |
+| building          | string     |             |
+| phone_number      | string     | null: false, maxlength: 11 |
 | purchase          | references | null: false |
 | prefecture_id     | integer    | null: false, ActiveHash |
 
