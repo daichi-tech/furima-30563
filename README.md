@@ -23,7 +23,7 @@ has_many :purchases
 
 | Column            | Type       | Options     |
 | --------          | ------     | ----------- |
-| name              | string     | null: false, maxlength: 40 |
+| title             | string     | null: false, maxlength: 40 |
 | information       | text       | null: false  maxlength: 1000 |
 | price             | integer    | null: false |
 | user              | references | null: false |
