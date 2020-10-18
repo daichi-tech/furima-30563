@@ -4,7 +4,6 @@ function charge(){
   const profitSell = document.getElementById("profit");
   priceInput.addEventListener("keyup", () => {
     price = priceInput.value;
-    console.log(price)
     let tax = Math.round(price / 10);
     priceCharge.innerHTML = tax;
     profitSell.innerHTML = (price - tax);

@@ -13,11 +13,11 @@ class Item < ApplicationRecord
     validates :title, length: {maximum: 40 }
     validates :information, length: {maximum: 1000 }
     validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }, format: {with: /\A[0-9]+\z/}
-    validates :category
-    validates :status
-    validates :delivery_fee
-    validates :delivery_date
-    validates :prefecture
+    validates :category_id
+    validates :status_id
+    validates :delivery_fee_id
+    validates :delivery_date_id
+    validates :prefecture_id
     validates :image
   end
   with_options numericality: { other_than: 1 } do
