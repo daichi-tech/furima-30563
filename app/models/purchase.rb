@@ -8,7 +8,7 @@ class Purchase
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :city
     validates :house_number
-    validates :phone_number, numericality: { only_integer: true, with: /\A\d{11}\z/ }
+    validates :phone_number, length: { minimum: 10 }, numericality: { only_integer: true, with: /\A\d{11}\z/ }
     validates :token
   end
   validates :prefecture_id, numericality: { other_than: 0 }
