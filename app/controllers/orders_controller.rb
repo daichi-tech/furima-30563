@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :set_item, only: [:index, :create, :move_to_index]
   before_action :move_to_index, only: :index
-  before_action :move_to_index2, only: :index
-  before_action :set_item, only: [:index, :create, :pay_item, :move_to_index2]
 
   def index
     @purchase = Purchase.new
@@ -35,17 +34,14 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
     if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    elsif user_signed_in? && current_user.id != @item.user_id && @item.order != nil
       redirect_to root_path
     end
   end
 
-  def move_to_index2
-    if user_signed_in? && current_user.id != @item.user_id && @item.order != nil
-      redirect_to root_path
-    end
-  end
+  
 
   def set_item
     @item = Item.find(params[:item_id])
