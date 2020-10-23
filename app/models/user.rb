@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          validates :email, uniqueness: true
-         validates :password, confirmation: true, format: { with: /\A(?=.*?[a-z])[a-z\d]{6,32}+\z/}       
+         validates :password, confirmation: true, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{6,32}+\z/i}       
   with_options presence: true do
          PASSWORD_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/
          PASSWORD_REGEX_2 = /\A[ァ-ヶー]+\z/
